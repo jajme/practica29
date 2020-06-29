@@ -9,12 +9,16 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class GeneradorPDF {
-	public void add_usuario(Usuario p) throws FileNotFoundException, DocumentException {
+	public static void add_usuario(Usuario p) throws FileNotFoundException, DocumentException {
 		Document document = new Document();
-		PdfWriter.getInstance(document, new FileOutputStream((p.getName()+p.getSurname())));
+		PdfWriter.getInstance(document, new FileOutputStream(("pdf/"+p.getName()+p.getSurname())+".pdf"));
 		document.open();
-		document.add(new Paragraph("Hello World!"));
+		document.add(new Paragraph("name: "+ p.getName()));
+		document.add(new Paragraph("Surname: "+ p.getSurname()));
+		document.add(new Paragraph("Brtihdate: "+ p.getBirthdate()));
+		document.add(new Paragraph("DNI: "+ p.getDNI()));
+		document.add(new Paragraph("age: "+ p.getAge()));
+		document.add(new Paragraph("adut: "+ p.isAdult()));
 		document.close();
 	}
-
 }
